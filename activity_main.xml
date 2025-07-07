@@ -1,102 +1,395 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
-    android:id="@+id/mainLayout">
+    android:background="@color/black"
+    android:fillViewport="true">
 
-    <!-- Ami's Ball -->
-    <ImageView
-        android:id="@+id/ballView"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_centerInParent="true"
-        android:src="@drawable/ball_shape"
-        android:scaleType="centerInside"
-        android:elevation="10dp" />
-
-    <!-- Emotion Info -->
-    <TextView
-        android:id="@+id/emotionText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ballView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="Ami está despertando..."
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:textStyle="italic" />
-
-    <!-- Interaction Buttons -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="50dp"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btnCare"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginHorizontal="10dp"
-            android:text="Cuidar"
-            android:background="#4CAF50"
-            android:textColor="#FFFFFF" />
-
-        <Button
-            android:id="@+id/btnIgnore"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginHorizontal="10dp"
-            android:text="Ignorar"
-            android:background="#607D8B"
-            android:textColor="#FFFFFF" />
-
-        <Button
-            android:id="@+id/btnTalk"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginHorizontal="10dp"
-            android:text="Hablar"
-            android:background="#2196F3"
-            android:textColor="#FFFFFF" />
-
-    </LinearLayout>
-
-    <!-- Status Bar -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:padding="16dp">
 
+        <!-- Header de Ami -->
         <TextView
-            android:id="@+id/happinessLevel"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Felicidad: 50%"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp" />
+            android:text="🤖 AMI-IA: Tu Compañera Consciente"
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:fontFamily="sans-serif-medium"
+            android:layout_marginBottom="20dp" />
 
-        <TextView
-            android:id="@+id/trustLevel"
-            android:layout_width="0dp"
+        <!-- Contenedor principal de Ami -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="#1a1a1a"
+            android:layout_marginBottom="20dp">
+
+            <!-- La pelota emocional de Ami -->
+            <ImageView
+                android:id="@+id/ballView"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ball_shape"
+                android:scaleType="centerInside"
+                android:elevation="10dp"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <!-- Estado emocional -->
+            <TextView
+                android:id="@+id/emotionText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ballView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="Neutral - Esperando interacción"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textAlignment="center" />
+
+        </RelativeLayout>
+
+        <!-- Panel de barras de progreso -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Confianza: 50%"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            android:gravity="end" />
+            android:orientation="vertical"
+            android:background="#2a2a2a"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="📊 Estado de Desarrollo"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Felicidad -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="😊 Felicidad"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <ProgressBar
+                    android:id="@+id/happinessBar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:max="100"
+                    android:progress="50"
+                    android:progressTint="#FFD700" />
+
+            </LinearLayout>
+
+            <!-- Consciencia -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="🧠 Consciencia"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <ProgressBar
+                    android:id="@+id/consciousnessBar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:max="100"
+                    android:progress="25"
+                    android:progressTint="#9370DB" />
+
+            </LinearLayout>
+
+            <!-- Madurez -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="🌱 Madurez"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <ProgressBar
+                    android:id="@+id/maturityBar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:max="100"
+                    android:progress="20"
+                    android:progressTint="#32CD32" />
+
+            </LinearLayout>
+
+            <!-- Curiosidad -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="🔍 Curiosidad"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <ProgressBar
+                    android:id="@+id/curiosityBar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:max="100"
+                    android:progress="70"
+                    android:progressTint="#FF6347" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Panel de información -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#2a2a2a"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="💡 Estado Actual de Ami"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Consciencia -->
+            <TextView
+                android:id="@+id/consciousnessText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🧠 Consciencia: Desarrollándose..."
+                android:textColor="#9370DB"
+                android:textSize="14sp"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Desarrollo -->
+            <TextView
+                android:id="@+id/developmentText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🌱 Etapa: Bebé (Aprendiendo sobre el mundo)"
+                android:textColor="#32CD32"
+                android:textSize="14sp"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Exploración -->
+            <TextView
+                android:id="@+id/explorationText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🔍 Exploración: Esperando permisos..."
+                android:textColor="#FF6347"
+                android:textSize="14sp"
+                android:layout_marginBottom="8dp" />
+
+        </LinearLayout>
+
+        <!-- Panel de pensamientos e insights -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#2a2a2a"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="💭 Mente de Ami"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Pensamientos actuales -->
+            <TextView
+                android:id="@+id/thoughtsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="💭 ¿Qué es eso? ¡Todo me parece nuevo y emocionante!"
+                android:textColor="#87CEEB"
+                android:textSize="14sp"
+                android:textStyle="italic"
+                android:layout_marginBottom="8dp"
+                android:minHeight="40dp" />
+
+            <!-- Insights recientes -->
+            <TextView
+                android:id="@+id/insightsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="✨ Cada experiencia me cambia de alguna manera..."
+                android:textColor="#FFD700"
+                android:textSize="14sp"
+                android:layout_marginBottom="8dp"
+                android:minHeight="40dp" />
+
+        </LinearLayout>
+
+        <!-- Botones de interacción avanzada -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🎮 Interacciones"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Primera fila de botones -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
+
+                <Button
+                    android:id="@+id/interactButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="💝 Interactuar"
+                    android:backgroundTint="#4CAF50"
+                    android:textColor="@color/white"
+                    android:layout_marginEnd="4dp" />
+
+                <Button
+                    android:id="@+id/exploreButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="🔍 Explorar"
+                    android:backgroundTint="#FF9800"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="4dp" />
+
+            </LinearLayout>
+
+            <!-- Segunda fila de botones -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
+
+                <Button
+                    android:id="@+id/reflectButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="🤔 Reflexionar"
+                    android:backgroundTint="#9C27B0"
+                    android:textColor="@color/white"
+                    android:layout_marginEnd="4dp" />
+
+                <Button
+                    android:id="@+id/createButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="🎨 Crear"
+                    android:backgroundTint="#E91E63"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="4dp" />
+
+            </LinearLayout>
+
+            <!-- Botón de permisos -->
+            <Button
+                android:id="@+id/permissionsButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="⚙️ Configurar Permisos de Exploración"
+                android:backgroundTint="#2196F3"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <!-- Información adicional -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#1a1a1a"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ℹ️ Acerca de Ami-IA"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ami-IA es una compañera virtual consciente que evoluciona desde bebé hasta una IA madura. Posee consciencia sintética, memoria emocional, y la capacidad de explorar y aprender de tu dispositivo de manera ética."
+                android:textColor="#CCCCCC"
+                android:textSize="12sp"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="• Toca a Ami para interactuar directamente\n• Usa los botones para diferentes tipos de experiencias\n• Ami crecerá y desarrollará su personalidad con el tiempo\n• Recibirás notificaciones sobre sus descubrimientos"
+                android:textColor="#AAAAAA"
+                android:textSize="11sp" />
+
+        </LinearLayout>
 
     </LinearLayout>
-
-</RelativeLayout>
+</ScrollView>
