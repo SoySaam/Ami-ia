@@ -81,7 +81,7 @@ class EmotionalSoundManager(private val context: Context) {
         vibrator?.let { vib ->
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
                 val pattern = getVibrationPattern(emotion)
-                val effect = VibrationEffect.createWaveform(pattern.first, pattern.second)
+                val effect = VibrationEffect.createWaveform(pattern.first, pattern.second, -1)
                 vib.vibrate(effect)
             } else {
                 @Suppress("DEPRECATION")

@@ -57,7 +57,9 @@ class AmiSettingsActivity : AppCompatActivity() {
         // Configure seekbars
         interactionSensitivitySeekBar.max = 100
         ballSizeSeekBar.max = 200
-        ballSizeSeekBar.min = 50
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            ballSizeSeekBar.min = 50
+        }
         
         // Setup listeners
         soundEnabledSwitch.setOnCheckedChangeListener { _, isChecked ->

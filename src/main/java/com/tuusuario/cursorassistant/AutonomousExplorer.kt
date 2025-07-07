@@ -237,7 +237,7 @@ class AutonomousExplorer(private val context: Context) {
         
         // Mantener solo las últimas 50 exploraciones
         if (explorationHistory.size > 50) {
-            val sortedHistory = explorationHistory.toList().sortedBy { it.split(":")[0].toLong() }
+            val sortedHistory = explorationHistory.toList().sortedBy { it.split(":".toRegex())[0].toLong() }
             explorationHistory.clear()
             explorationHistory.addAll(sortedHistory.takeLast(50))
         }
@@ -255,7 +255,7 @@ class AutonomousExplorer(private val context: Context) {
         stimulations.add(stimulation)
         
         if (stimulations.size > 30) {
-            val sortedStimulations = stimulations.toList().sortedBy { it.split(":")[0].toLong() }
+            val sortedStimulations = stimulations.toList().sortedBy { it.split(":".toRegex())[0].toLong() }
             stimulations.clear()
             stimulations.addAll(sortedStimulations.takeLast(30))
         }
@@ -279,7 +279,7 @@ class AutonomousExplorer(private val context: Context) {
     // Obtener exploraciones recientes
     private fun getRecentExplorations(): List<String> {
         val history = preferences.getStringSet("exploration_history", mutableSetOf()) ?: mutableSetOf()
-        return history.map { it.split(":", 2)[1] }.takeLast(5)
+        return history.map { it.split(":".toRegex(), 2)[1] }.takeLast(5)
     }
     
     // Obtener descubrimiento aleatorio para compartir

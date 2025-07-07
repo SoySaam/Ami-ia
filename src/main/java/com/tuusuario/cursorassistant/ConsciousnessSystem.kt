@@ -164,7 +164,7 @@ class ConsciousnessSystem(private val context: Context) {
         
         // Mantener solo los últimos 20 pensamientos
         if (thoughts.size > 20) {
-            val sortedThoughts = thoughts.toList().sortedBy { it.split(":")[0].toLong() }
+            val sortedThoughts = thoughts.toList().sortedBy { it.split(":".toRegex())[0].toLong() }
             thoughts.clear()
             thoughts.addAll(sortedThoughts.takeLast(20))
         }
@@ -179,7 +179,7 @@ class ConsciousnessSystem(private val context: Context) {
         
         // Mantener solo las últimas 15 reflexiones
         if (reflections.size > 15) {
-            val sortedReflections = reflections.toList().sortedBy { it.split(":")[0].toLong() }
+            val sortedReflections = reflections.toList().sortedBy { it.split(":".toRegex())[0].toLong() }
             reflections.clear()
             reflections.addAll(sortedReflections.takeLast(15))
         }
@@ -190,7 +190,7 @@ class ConsciousnessSystem(private val context: Context) {
     // Obtener reflexiones recientes
     fun getRecentReflections(): List<String> {
         val reflections = preferences.getStringSet("reflections", mutableSetOf()) ?: mutableSetOf()
-        return reflections.map { it.split(":", 2)[1] }.takeLast(5)
+        return reflections.map { it.split(":".toRegex(), 2)[1] }.takeLast(5)
     }
     
     // Reset del sistema de consciencia

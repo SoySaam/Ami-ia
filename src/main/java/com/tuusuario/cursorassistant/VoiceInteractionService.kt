@@ -1,7 +1,11 @@
 package com.tuusuario.cursorassistant
 
+import android.app.Service
 import android.content.Context
 import android.content.Intent
+import android.os.Binder
+import android.os.Bundle
+import android.os.IBinder
 import android.speech.RecognitionListener
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
@@ -12,7 +16,7 @@ import kotlinx.coroutines.withTimeoutOrNull
 import java.util.*
 import kotlin.coroutines.resume
 
-class VoiceInteractionService : TextToSpeech.OnInitListener {
+class VoiceInteractionService : Service(), TextToSpeech.OnInitListener {
     
     private var textToSpeech: TextToSpeech? = null
     private var speechRecognizer: SpeechRecognizer? = null
@@ -21,9 +25,23 @@ class VoiceInteractionService : TextToSpeech.OnInitListener {
     
     private var recognitionCallback: ((String) -> Unit)? = null
     
-    fun initialize(context: Context) {
-        textToSpeech = TextToSpeech(context, this)
-        speechRecognizer = SpeechRecognizer.createSpeechRecognizer(context)
+    inner class VoiceInteractionBinder : Binder() {
+        fun getService(): VoiceInteractionService = this@VoiceInteractionService
+    }
+    
+    private val binder = VoiceInteractionBinder()
+    
+    override fun onBind(intent: Intent?): IBinder = binder
+    
+    override fun onCreate() {
+        super.onCreate()
+        initialize()
+    }
+    
+    fun initialize(context: Context? = null) {
+        val serviceContext = context ?: this
+        textToSpeech = TextToSpeech(serviceContext, this)
+        speechRecognizer = SpeechRecognizer.createSpeechRecognizer(serviceContext)
     }
     
     override fun onInit(status: Int) {
@@ -198,6 +216,11 @@ class VoiceInteractionService : TextToSpeech.OnInitListener {
         textToSpeech?.shutdown()
         isListening = false
         isTtsReady = false
+    }
+    
+    override fun onDestroy() {
+        super.onDestroy()
+        release()
     }
     
     fun isCurrentlyListening(): Boolean = isListening

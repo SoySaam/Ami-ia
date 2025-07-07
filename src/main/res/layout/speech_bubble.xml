@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/speechBubbleContainer"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/speechBubbleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="250dp"
+        android:background="@drawable/speech_bubble_background"
+        android:text="¡Hola! Soy Ami 😊"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        android:padding="12dp"
+        android:elevation="8dp" />
+
+</LinearLayout>
