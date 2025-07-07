@@ -6,8 +6,10 @@ import android.animation.ValueAnimator
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Button
 import android.widget.ImageButton
@@ -35,15 +37,22 @@ class MainActivity : AppCompatActivity() {
     private val activityScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
     
     private var currentAnimator: ValueAnimator? = null
+    
+    companion object {
+        private const val OVERLAY_PERMISSION_REQUEST_CODE = 1001
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main_launcher)
 
         initializeViews()
         initializeEmotionalSystem()
         setupClickListeners()
-        requestNotificationPermission()
+        requestPermissions()
+        
+        // Check and request overlay permission
+        checkOverlayPermission()
         
         // Start background service
         AmiBackgroundService.startService(this)
@@ -64,6 +73,25 @@ class MainActivity : AppCompatActivity() {
         btnIgnore = findViewById(R.id.btnIgnore)
         btnTalk = findViewById(R.id.btnTalk)
         settingsButton = findViewById(R.id.settingsButton)
+        
+        // Add new floating controls
+        val btnStartFloating = findViewById<Button>(R.id.btnStartFloating)
+        val btnStopFloating = findViewById<Button>(R.id.btnStopFloating)
+        
+        btnStartFloating?.setOnClickListener {
+            if (canDrawOverlays()) {
+                FloatingAmiService.start(this)
+                Toast.makeText(this, "¡Ami ahora vive en tu pantalla! 🌟", Toast.LENGTH_LONG).show()
+                finish() // Close main app since Ami is now floating
+            } else {
+                requestOverlayPermission()
+            }
+        }
+        
+        btnStopFloating?.setOnClickListener {
+            FloatingAmiService.stop(this)
+            Toast.makeText(this, "Ami ha regresado a casa 🏠", Toast.LENGTH_SHORT).show()
+        }
     }
     
     private fun initializeEmotionalSystem() {
@@ -283,19 +311,59 @@ class MainActivity : AppCompatActivity() {
         }
     }
     
-    private fun requestNotificationPermission() {
+    private fun requestPermissions() {
+        val permissions = mutableListOf<String>()
+        
+        // Notification permission
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            if (ContextCompat.checkSelfPermission(
-                    this,
-                    android.Manifest.permission.POST_NOTIFICATIONS
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                ActivityCompat.requestPermissions(
-                    this,
-                    arrayOf(android.Manifest.permission.POST_NOTIFICATIONS),
-                    1
-                )
+            if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS) 
+                != PackageManager.PERMISSION_GRANTED) {
+                permissions.add(android.Manifest.permission.POST_NOTIFICATIONS)
             }
+        }
+        
+        // Audio recording permission for voice interaction
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.RECORD_AUDIO) 
+            != PackageManager.PERMISSION_GRANTED) {
+            permissions.add(android.Manifest.permission.RECORD_AUDIO)
+        }
+        
+        if (permissions.isNotEmpty()) {
+            ActivityCompat.requestPermissions(this, permissions.toTypedArray(), 1)
+        }
+    }
+    
+    private fun checkOverlayPermission() {
+        if (!canDrawOverlays()) {
+            showOverlayPermissionDialog()
+        }
+    }
+    
+    private fun canDrawOverlays(): Boolean {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Settings.canDrawOverlays(this)
+        } else {
+            true
+        }
+    }
+    
+    private fun showOverlayPermissionDialog() {
+        android.app.AlertDialog.Builder(this)
+            .setTitle("Permiso requerido")
+            .setMessage("Ami necesita permiso para aparecer en tu pantalla de inicio como un asistente flotante. ¿Quieres activar esta función?")
+            .setPositiveButton("Sí, activar") { _, _ ->
+                requestOverlayPermission()
+            }
+            .setNegativeButton("Más tarde") { _, _ ->
+                Toast.makeText(this, "Puedes activar esto más tarde desde configuración", Toast.LENGTH_LONG).show()
+            }
+            .show()
+    }
+    
+    private fun requestOverlayPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:$packageName"))
+            startActivityForResult(intent, OVERLAY_PERMISSION_REQUEST_CODE)
         }
     }
     
@@ -306,10 +374,24 @@ class MainActivity : AppCompatActivity() {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == 1) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "¡Ahora Ami puede enviarte notificaciones! 📱", Toast.LENGTH_LONG).show()
+            val granted = grantResults.all { it == PackageManager.PERMISSION_GRANTED }
+            if (granted) {
+                Toast.makeText(this, "¡Permisos concedidos! Ami está lista para interactuar 🎉", Toast.LENGTH_LONG).show()
             } else {
-                Toast.makeText(this, "Ami no podrá enviarte mensajes en segundo plano 😔", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Ami necesita estos permisos para funcionar completamente �", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+    
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == OVERLAY_PERMISSION_REQUEST_CODE) {
+            if (canDrawOverlays()) {
+                Toast.makeText(this, "¡Perfecto! Ahora Ami puede vivir en tu pantalla 🌟", Toast.LENGTH_LONG).show()
+                // Automatically start floating service
+                FloatingAmiService.start(this)
+            } else {
+                Toast.makeText(this, "Sin este permiso, Ami solo funcionará dentro de la app 😔", Toast.LENGTH_LONG).show()
             }
         }
     }
