@@ -3,12 +3,14 @@ package com.tuusuario.cursorassistant
 import android.animation.ArgbEvaluator
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -26,8 +28,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnCare: Button
     private lateinit var btnIgnore: Button
     private lateinit var btnTalk: Button
+    private lateinit var settingsButton: ImageButton
     
     private lateinit var emotionalSystem: EmotionalSystem
+    private lateinit var soundManager: EmotionalSoundManager
     private val activityScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
     
     private var currentAnimator: ValueAnimator? = null
@@ -59,16 +63,19 @@ class MainActivity : AppCompatActivity() {
         btnCare = findViewById(R.id.btnCare)
         btnIgnore = findViewById(R.id.btnIgnore)
         btnTalk = findViewById(R.id.btnTalk)
+        settingsButton = findViewById(R.id.settingsButton)
     }
     
     private fun initializeEmotionalSystem() {
         emotionalSystem = EmotionalSystem(this)
+        soundManager = EmotionalSoundManager(this)
     }
     
     private fun setupClickListeners() {
         btnCare.setOnClickListener {
             emotionalSystem.onPositiveInteraction()
             animateInteraction("care")
+            soundManager.playInteractionFeedback("care")
             updateEmotionalDisplay()
             Toast.makeText(this, "Has cuidado a Ami ❤️", Toast.LENGTH_SHORT).show()
         }
@@ -76,6 +83,7 @@ class MainActivity : AppCompatActivity() {
         btnIgnore.setOnClickListener {
             emotionalSystem.onIgnoreInteraction()
             animateInteraction("ignore")
+            soundManager.playInteractionFeedback("ignore")
             updateEmotionalDisplay()
             Toast.makeText(this, "Has ignorado a Ami... 😔", Toast.LENGTH_SHORT).show()
         }
@@ -83,6 +91,7 @@ class MainActivity : AppCompatActivity() {
         btnTalk.setOnClickListener {
             emotionalSystem.onTalkInteraction()
             animateInteraction("talk")
+            soundManager.playInteractionFeedback("talk")
             updateEmotionalDisplay()
             showConversationDialog()
         }
@@ -90,6 +99,7 @@ class MainActivity : AppCompatActivity() {
         // Long press on ball to reset emotional state (for testing)
         ballView.setOnLongClickListener {
             emotionalSystem.resetEmotionalState()
+            soundManager.playInteractionFeedback("long_press")
             updateEmotionalDisplay()
             Toast.makeText(this, "Ami ha sido reiniciada 🔄", Toast.LENGTH_LONG).show()
             true
@@ -99,7 +109,14 @@ class MainActivity : AppCompatActivity() {
         ballView.setOnClickListener {
             emotionalSystem.onPositiveInteraction()
             animateInteraction("touch")
+            soundManager.playInteractionFeedback("touch")
             updateEmotionalDisplay()
+        }
+        
+        // Settings button
+        settingsButton.setOnClickListener {
+            val intent = Intent(this, AmiSettingsActivity::class.java)
+            startActivity(intent)
         }
     }
     
@@ -108,6 +125,9 @@ class MainActivity : AppCompatActivity() {
         
         // Animate color change
         animateColorChange(emotion.color)
+        
+        // Play emotional sound and vibration
+        soundManager.playEmotionalSound(emotion.name)
         
         // Update text displays
         emotionText.text = emotionalSystem.getEmotionalMessage()
@@ -304,5 +324,6 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         activityScope.cancel()
+        soundManager.release()
     }
 }
