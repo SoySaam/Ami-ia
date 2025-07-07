@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="150dp"
+    android:layout_height="150dp"
+    android:padding="10dp">
+
+    <!-- Ami's Floating Sphere -->
+    <View
+        android:id="@+id/amiSphere"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_gravity="center"
+        android:background="@drawable/ami_sphere_bg"
+        android:elevation="20dp"
+        android:clickable="true"
+        android:focusable="true" />
+
+    <!-- Subtle glow effect -->
+    <View
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_gravity="center"
+        android:background="@drawable/ami_glow_bg"
+        android:elevation="10dp"
+        android:alpha="0.3" />
+
+</FrameLayout>
