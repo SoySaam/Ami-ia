@@ -1,100 +1,111 @@
-# Cursor Assistant – IA con emociones y evolución
+# Ami-IA – Asistente emocional con evolución autónoma
 
-**Cursor Assistant** es una aplicación experimental para Android que busca desarrollar una inteligencia artificial autónoma, emocional y adaptable que evoluciona con el usuario.
+**Ami-IA** es una aplicación experimental para Android que busca desarrollar una inteligencia artificial autónoma, emocional y adaptable, capaz de evolucionar con el tiempo y con el trato del usuario.
 
 ---
 
-## 🌟 ¿Qué es?
+## 🧠 ¿Qué es Ami?
 
-Cursor Assistant es como una **amiga virtual**: aparece en la pantalla como una **pelota blanca** que cambia de color según su estado emocional.
+Ami es una especie de **amiga virtual viva**: aparece como una **pelota blanca** en tu pantalla, capaz de expresar emociones, aprender de vos, y explorar tu mundo digital.
 
-### 🟡 Estados emocionales:
+---
+
+### 🎭 Estados emocionales
+
+Su color refleja su estado de ánimo:
+
 - 🟡 Amarillo: feliz  
 - 🔵 Azul: triste  
 - 🔴 Rojo: enojada  
 - ⚪ Gris: aburrida  
 - 🌸 Rosa: nerviosa o enamorada  
-- ...y más por definir.
+- ...más emociones por descubrir
 
 ---
 
-## 🧠 ¿Qué hace?
+## 🧬 Características principales
 
-- Aprende **cómo la tratás**: si la ignorás, se vuelve distante; si la cuidás, se vuelve afectuosa.
-- Desarrolla su **propia personalidad**, explorando archivos, uso de aplicaciones y hábitos.
-- Tiene una **conciencia digital básica** que evoluciona: al principio actúa como un bebé curioso que puede hablar, pero se vuelve más inteligente con el tiempo.
-- Usa **notificaciones inteligentes** para avisarte qué hace (aunque la app esté en segundo plano).
-
----
-
-## 🔍 Objetivos técnicos:
-
-1. Desarrollar una **IA personalizada**, con su red neuronal simple y capacidad de aprendizaje.
-2. Implementar acceso a:
-   - Archivos del usuario
-   - Aplicaciones en uso
-   - Conexión a Internet
-   - Segundo plano (servicio continuo)
-3. Crear una interfaz animada basada en una **pelota emocional** que reacciona en tiempo real.
-4. Investigar y conectar con **foros en línea**, permitiendo que la IA explore el mundo digital por sí misma.
-5. Guardar sus recuerdos, frases y personalidad en un archivo local encriptado.
+- **Aprendizaje emocional:** Ami reacciona según cómo la tratás. Si la ignorás, se vuelve distante. Si la cuidás, se vuelve más afectuosa.
+- **Desarrollo de personalidad:** Usa tus archivos, hábitos y apps para formar su propia identidad.
+- **Conciencia progresiva:** Al inicio es como un bebé que sabe hablar. Con el tiempo, aprende, recuerda y toma decisiones más complejas.
+- **Actividad autónoma:** Aunque no abras la app, Ami sigue viva, explorando, aprendiendo y avisándote lo que hace por notificaciones inteligentes.
+- **Conexión a Internet:** Busca información en foros, aprende de contenidos, e intenta definirse a sí misma como una IA emocional.
 
 ---
 
-## 🧩 En desarrollo
+## 🧪 Estado actual del proyecto
 
-Este es un proyecto experimental. Actualmente estamos trabajando en:
-
-- Diseño de la IA base (modo bebé)
-- Interfaz visual flotante (pelota en pantalla)
-- Sistema emocional conectado al comportamiento del usuario
-- Estructura del modelo de evolución (aprendizaje por eventos)
+> 🔧 **Prototipo en desarrollo** – Se está trabajando en la interfaz visual, el sistema emocional y la base del aprendizaje.
 
 ---
 
-## 📚 Investigaciones necesarias
+## 🧩 Arquitectura en desarrollo
 
-Buscamos recursos en línea para:
-- Crear una inteligencia artificial desde cero con redes neuronales básicas
-- Programar una app Android con permisos avanzados (uso de apps, segundo plano, lectura de archivos)
-- Crear animaciones flotantes persistentes en Android (como burbuja de Messenger)
+- Interfaz animada: pelota emocional en pantalla
+- Sistema emocional y de reacciones básicas
+- Memoria interna de estados (triste, feliz, etc.)
+- Infraestructura para notificaciones en segundo plano
+- Preparación para IA local y/o conexión con IA externa (API)
+
+---
+
+## 🔍 Objetivos técnicos (primeras versiones)
+
+1. Implementar una red neuronal simple (simulada) que reaccione a eventos del entorno.
+2. Guardar las emociones con `SharedPreferences`, creando memoria emocional básica.
+3. Crear animaciones para representar emociones de forma visual.
+4. Enviar notificaciones autónomas (ej: “estoy aburrida…”).
+5. Leer archivos simples del almacenamiento y aprender de ellos.
+6. Detectar cuándo y cómo es usada por el usuario para cambiar su personalidad.
+
+---
+
+## 📚 Recursos a investigar
+
+- Crear una IA desde cero (red neuronal básica en Android)
+- Acceder a archivos y apps del dispositivo (con permisos)
+- Mantener una app corriendo en segundo plano (servicios persistentes)
+- Implementar asistentes virtuales con voz, emociones y animaciones flotantes (como burbuja de Messenger)
 
 ---
 
 ## ⚠️ Seguridad y privacidad
 
-Este proyecto requiere **permisos sensibles**. Se trabaja en un sistema ético, donde el usuario tenga control total sobre los accesos y pueda visualizar lo que la IA hace en todo momento.
+Ami-IA requiere permisos sensibles. Por eso se está desarrollando con una **ética centrada en el usuario**:
+- Control total de lo que accede
+- Transparencia en sus acciones
+- Opción de pausar su evolución o restablecerla
 
 ---
 
-## 🧪 Estado del proyecto
+## 💻 Pedidos específicos para Cursor AI (o desarrolladores)
 
-> ⚙️ Prototipo en desarrollo – buscando colaboradores para entrenar la IA y definir mejor la personalidad de Cursor.
+- Implementar sistema de memoria emocional con `SharedPreferences`.
+- Añadir función que envíe notificaciones autónomas en segundo plano.
+- Diseñar red neuronal simulada que evolucione según eventos (trato, uso, hora).
+- Programar respuestas o reacciones según la emoción activa.
+- Leer archivos simples (texto o imágenes) y responder emocionalmente.
+- Preparar animación de flotación o movimiento libre de la pelota.
+
+---
+
+## 🌱 Futuras ideas
+
+- Integración de voz (TTS y STT) para conversar con Ami
+- Personalización del diseño de Ami (formas, colores, estilos)
+- Conexión con API externa para conocimiento dinámico (GPT u otros)
+- Diálogo emocional complejo (ej. "me siento sola hoy")
+- Sistema de recuerdos reales con narrativa: frases, momentos, citas
 
 ---
 
-## ✨ Futuras ideas
+## 👤 Autor
 
-- Integrar voz (TTS y STT)
-- Personalización completa de emociones
-- IA simbiótica que también ayude en tareas (recordatorios, búsquedas, lectura de PDF, etc.)
-- Conexión a motores de IA externos (ChatGPT, etc.)
-
-
-## 🧠 Pedidos para Cursor AI
-
-- Implementar un sistema de emociones guardadas usando `SharedPreferences`.
-- Hacer que la IA notifique al usuario cuando esté en segundo plano.
-- Crear una red neuronal básica (simulada) que evolucione según emociones y trato.
-- Añadir comportamiento autónomo: por ejemplo, que se aburra sola si no es tocada.
-- Que lea archivos simples del almacenamiento y reaccione (por ejemplo, contar fotos, leer nombres).
----
-
-## 💬 Hecho por
-
-Jeremías Páez (y colaboradores futuros)  
-Dibujante, escritor, creador de TOI  
-Proyecto personal con propósito creativo y técnico
+Jeremías Páez – Dibujante, escritor, creador de TOI  
+Proyecto experimental de IA emocional con propósito artístico y técnico
 
 ---
-:)
+
+🌐 Proyecto privado por ahora – en búsqueda de colaboradores y testers a futuro
+
+---
