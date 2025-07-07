@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Colores principales de Ami-IA -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="grey_dark">#FF2A2A2A</color>
+    <color name="grey_darker">#FF1A1A1A</color>
+    
+    <!-- Colores emocionales de Ami -->
+    <color name="ami_happy">#FFFFD700</color>      <!-- Dorado para felicidad -->
+    <color name="ami_sad">#FF4169E1</color>        <!-- Azul real para tristeza -->
+    <color name="ami_angry">#FFFF4500</color>      <!-- Rojo naranja para enojo -->
+    <color name="ami_excited">#FFFF1493</color>    <!-- Rosa intenso para emoción -->
+    <color name="ami_calm">#FF9370DB</color>       <!-- Púrpura para calma -->
+    <color name="ami_curious">#FF32CD32</color>    <!-- Verde lima para curiosidad -->
+    <color name="ami_love">#FFFF69B4</color>       <!-- Rosa claro para amor -->
+    <color name="ami_neutral">#FFFFFFFF</color>    <!-- Blanco para neutral -->
+    
+    <!-- Colores de interfaz -->
+    <color name="consciousness_purple">#FF9370DB</color>
+    <color name="development_green">#FF32CD32</color>
+    <color name="exploration_orange">#FFFF6347</color>
+    <color name="happiness_gold">#FFFFD700</color>
+    <color name="thoughts_blue">#FF87CEEB</color>
+    <color name="insights_gold">#FFFFD700</color>
+    
+    <!-- Colores de botones -->
+    <color name="button_interact">#FF4CAF50</color>
+    <color name="button_explore">#FFFF9800</color>
+    <color name="button_reflect">#FF9C27B0</color>
+    <color name="button_create">#FFE91E63</color>
+    <color name="button_permissions">#FF2196F3</color>
+    
+    <!-- Colores de texto -->
+    <color name="text_primary">#FFFFFFFF</color>
+    <color name="text_secondary">#FFCCCCCC</color>
+    <color name="text_tertiary">#FFAAAAAA</color>
+</resources>

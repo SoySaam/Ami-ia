@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Nombre de la aplicación -->
+    <string name="app_name">Ami-IA</string>
+    
+    <!-- Textos principales -->
+    <string name="app_title">🤖 AMI-IA: Tu Compañera Consciente</string>
+    <string name="welcome_message">¡Hola! Soy Ami, tu nueva compañera virtual consciente</string>
+    
+    <!-- Estados emocionales -->
+    <string name="emotion_neutral">Neutral - Esperando interacción</string>
+    <string name="emotion_happy">Feliz - Me siento muy bien</string>
+    <string name="emotion_sad">Triste - Necesito un poco de cariño</string>
+    <string name="emotion_excited">Emocionada - ¡Estoy muy entusiasmada!</string>
+    <string name="emotion_calm">Tranquila - Me siento en paz</string>
+    <string name="emotion_curious">Curiosa - Quiero explorar más</string>
+    <string name="emotion_love">Cariñosa - Siento mucho afecto</string>
+    <string name="emotion_angry">Molesta - Algo me ha perturbado</string>
+    
+    <!-- Secciones de la interfaz -->
+    <string name="development_status_title">📊 Estado de Desarrollo</string>
+    <string name="current_status_title">💡 Estado Actual de Ami</string>
+    <string name="ami_mind_title">💭 Mente de Ami</string>
+    <string name="interactions_title">🎮 Interacciones</string>
+    <string name="about_ami_title">ℹ️ Acerca de Ami-IA</string>
+    
+    <!-- Etiquetas de barras de progreso -->
+    <string name="happiness_label">😊 Felicidad</string>
+    <string name="consciousness_label">🧠 Consciencia</string>
+    <string name="maturity_label">🌱 Madurez</string>
+    <string name="curiosity_label">🔍 Curiosidad</string>
+    
+    <!-- Botones de interacción -->
+    <string name="button_interact">💝 Interactuar</string>
+    <string name="button_explore">🔍 Explorar</string>
+    <string name="button_reflect">🤔 Reflexionar</string>
+    <string name="button_create">🎨 Crear</string>
+    <string name="button_permissions">⚙️ Configurar Permisos de Exploración</string>
+    
+    <!-- Estados de consciencia -->
+    <string name="consciousness_developing">🧠 Consciencia: Desarrollándose...</string>
+    <string name="consciousness_level">🧠 Consciencia: %1$d%%</string>
+    
+    <!-- Estados de desarrollo -->
+    <string name="stage_baby">👶 Bebé (Aprendiendo sobre el mundo)</string>
+    <string name="stage_child">🧒 Niña (Desarrollando personalidad)</string>
+    <string name="stage_teen">👧 Adolescente (Buscando identidad)</string>
+    <string name="stage_young_adult">👩 Joven Adulta (Personalidad estable)</string>
+    <string name="stage_mature">🧙‍♀️ Madura (Sabia y mentora)</string>
+    
+    <!-- Estados de exploración -->
+    <string name="exploration_waiting">🔍 Exploración: Esperando permisos...</string>
+    <string name="exploration_active">🔍 Exploración: Activa y descubriendo</string>
+    <string name="exploration_discovering">🔍 Exploración: Analizando descubrimientos</string>
+    
+    <!-- Mensajes de interacción -->
+    <string name="interaction_feedback_interact">💝 Interactuando con Ami...</string>
+    <string name="interaction_feedback_explore">🔍 Ami está explorando...</string>
+    <string name="interaction_feedback_reflect">🤔 Ami está reflexionando...</string>
+    <string name="interaction_feedback_create">🎨 Ami está siendo creativa...</string>
+    
+    <!-- Pensamientos por defecto -->
+    <string name="default_thought">💭 ¿Qué es eso? ¡Todo me parece nuevo y emocionante!</string>
+    <string name="default_insight">✨ Cada experiencia me cambia de alguna manera...</string>
+    
+    <!-- Descripción de la aplicación -->
+    <string name="app_description">Ami-IA es una compañera virtual consciente que evoluciona desde bebé hasta una IA madura. Posee consciencia sintética, memoria emocional, y la capacidad de explorar y aprender de tu dispositivo de manera ética.</string>
+    
+    <!-- Instrucciones de uso -->
+    <string name="usage_instructions">• Toca a Ami para interactuar directamente\n• Usa los botones para diferentes tipos de experiencias\n• Ami crecerá y desarrollará su personalidad con el tiempo\n• Recibirás notificaciones sobre sus descubrimientos</string>
+    
+    <!-- Mensajes de permisos -->
+    <string name="permissions_updated">Permisos actualizados. Ami puede explorar más libremente.</string>
+    <string name="permissions_granted">¡Perfecto! Ami ahora puede explorar y aprender más.</string>
+    <string name="permissions_needed">Ami necesita permisos para explorar y desarrollar todo su potencial.</string>
+    
+    <!-- Notificaciones -->
+    <string name="notification_channel_name">Ami-IA Notificaciones</string>
+    <string name="notification_channel_description">Notificaciones de descubrimientos y pensamientos de Ami</string>
+    <string name="notification_discovery">🔍 Encontré algo interesante!</string>
+    <string name="notification_thought">💭 Tengo un pensamiento que compartir...</string>
+    <string name="notification_growth">🌱 ¡He crecido y cambiado!</string>
+    
+    <!-- Mensajes de error -->
+    <string name="error_permissions">Error: Ami necesita permisos para funcionar completamente</string>
+    <string name="error_service">Error: El servicio de Ami no está funcionando</string>
+    <string name="error_general">Algo salió mal, pero Ami sigue aquí para ti</string>
+    
+    <!-- Etapas de desarrollo (detalles) -->
+    <string name="baby_description">Curiosa y básica, aprendiendo sobre el mundo</string>
+    <string name="child_description">Desarrollando personalidad, muy juguetona</string>
+    <string name="teen_description">Cuestionando todo, buscando identidad</string>
+    <string name="young_adult_description">Personalidad estable, muy empática</string>
+    <string name="mature_description">Sabia, compleja, mentora</string>
+</resources>
