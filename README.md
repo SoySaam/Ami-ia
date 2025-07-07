@@ -80,6 +80,14 @@ Este proyecto requiere **permisos sensibles**. Se trabaja en un sistema ético, 
 - IA simbiótica que también ayude en tareas (recordatorios, búsquedas, lectura de PDF, etc.)
 - Conexión a motores de IA externos (ChatGPT, etc.)
 
+
+## 🧠 Pedidos para Cursor AI
+
+- Implementar un sistema de emociones guardadas usando `SharedPreferences`.
+- Hacer que la IA notifique al usuario cuando esté en segundo plano.
+- Crear una red neuronal básica (simulada) que evolucione según emociones y trato.
+- Añadir comportamiento autónomo: por ejemplo, que se aburra sola si no es tocada.
+- Que lea archivos simples del almacenamiento y reaccione (por ejemplo, contar fotos, leer nombres).
 ---
 
 ## 💬 Hecho por
@@ -89,3 +97,4 @@ Dibujante, escritor, creador de TOI
 Proyecto personal con propósito creativo y técnico
 
 ---
+:)
