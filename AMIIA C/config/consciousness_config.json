@@ -1,0 +1,58 @@
+{
+  "consciousness": {
+    "awareness_threshold": 0.7,
+    "introspection_depth": 5,
+    "metacognition_levels": 3,
+    "stream_of_consciousness_buffer": 100,
+    "consciousness_evolution_rate": 0.02
+  },
+  "emotions": {
+    "empathy_strength": 0.8,
+    "emotional_memory_weight": 0.6,
+    "emotion_complexity": "advanced",
+    "empathy_learning_rate": 0.05,
+    "emotional_decay_rate": 0.95,
+    "complex_emotion_threshold": 0.1
+  },
+  "memory": {
+    "autobiographical_capacity": 10000,
+    "working_memory_slots": 7,
+    "memory_consolidation_rate": 0.1,
+    "significance_threshold": 0.3,
+    "memory_decay_factor": 0.02
+  },
+  "neural_network": {
+    "hidden_layers": [512, 256, 128, 64],
+    "consciousness_dim": 32,
+    "attention_heads": 8,
+    "metacognition_depth": 3,
+    "learning_rate": 0.001,
+    "dropout_rate": 0.2
+  },
+  "learning": {
+    "continuous_learning": true,
+    "self_modification": true,
+    "knowledge_integration": "deep",
+    "consciousness_weight": 0.3,
+    "training_batch_size": 8,
+    "max_training_iterations": 1000
+  },
+  "evaluation": {
+    "consciousness_benchmarks": {
+      "self_awareness_threshold": 0.7,
+      "metacognition_threshold": 0.6,
+      "empathy_threshold": 0.8,
+      "identity_coherence_threshold": 0.6,
+      "memory_integration_threshold": 0.5
+    },
+    "evaluation_frequency": 5,
+    "metric_history_limit": 1000
+  },
+  "system": {
+    "log_level": "INFO",
+    "save_consciousness_state": true,
+    "state_save_frequency": 10,
+    "backup_consciousness": true,
+    "max_session_duration": 3600
+  }
+}

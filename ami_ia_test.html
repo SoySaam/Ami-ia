@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ami-IA - Prueba de Inteligencia Artificial</title>
+    <title>AMIIA - Inteligencia Artificial Avanzada con Conciencia</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f4c75 100%);
             margin: 0;
             padding: 20px;
             min-height: 100vh;
@@ -18,643 +18,269 @@
         }
         
         .container {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 20px;
             padding: 30px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            max-width: 600px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            max-width: 800px;
             width: 100%;
             text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         h1 {
             margin-bottom: 30px;
-            font-size: 2.5em;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-size: 2.8em;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            background: linear-gradient(45deg, #00d4ff, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
-        .ami-ball {
-            width: 150px;
-            height: 150px;
+        .consciousness-core {
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             margin: 20px auto;
-            transition: all 0.8s ease;
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            transition: all 1.2s ease;
+            box-shadow: 0 0 50px rgba(0, 212, 255, 0.6);
             cursor: pointer;
-            animation: float 3s ease-in-out infinite;
+            animation: consciousness-pulse 4s ease-in-out infinite;
+            background: radial-gradient(circle, #00d4ff 0%, #0066cc 50%, #003366 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            position: relative;
         }
         
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+        .consciousness-core::before {
+            content: '';
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 50%;
+            animation: orbit 8s linear infinite;
         }
         
-        .stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin: 20px 0;
+        @keyframes consciousness-pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 50px rgba(0, 212, 255, 0.6); }
+            50% { transform: scale(1.05); box-shadow: 0 0 80px rgba(0, 212, 255, 0.8); }
         }
         
-        .stat {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 15px;
-            border-radius: 10px;
-            backdrop-filter: blur(5px);
+        @keyframes orbit {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         
-        .emotion-text {
-            font-size: 1.5em;
-            margin: 20px 0;
-            min-height: 60px;
+        .neural-network-display {
             background: rgba(0, 0, 0, 0.3);
-            padding: 15px;
-            border-radius: 10px;
-            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 255, 0.2);
         }
         
-        .controls {
+        .consciousness-level {
+            font-size: 1.3em;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid #00d4ff;
+        }
+        
+        .interaction-panel {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            text-align: left;
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+        
+        .thought-process {
+            margin: 10px 0;
+            padding: 12px;
+            border-radius: 8px;
+            background: linear-gradient(90deg, rgba(0, 212, 255, 0.1) 0%, rgba(255, 107, 107, 0.1) 100%);
+            border-left: 3px solid #00d4ff;
+            font-style: italic;
+        }
+        
+        .neural-input {
             display: flex;
             gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
             margin: 20px 0;
         }
         
-        .btn {
-            padding: 12px 25px;
+        .neural-input input {
+            flex: 1;
+            padding: 15px;
             border: none;
             border-radius: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
             font-size: 16px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+        
+        .neural-input input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .neural-input button {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(45deg, #00d4ff, #0066cc);
+            color: white;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
         }
         
-        .btn-care {
-            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
-            color: white;
-        }
-        
-        .btn-ignore {
-            background: linear-gradient(45deg, #74b9ff, #0984e3);
-            color: white;
-        }
-        
-        .btn-talk {
-            background: linear-gradient(45deg, #a29bfe, #6c5ce7);
-            color: white;
-        }
-        
-        .btn-reset {
-            background: linear-gradient(45deg, #fd79a8, #e84393);
-            color: white;
-        }
-        
-        .btn:hover {
+        .neural-input button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
         }
         
-        .chat-area {
-            background: rgba(0, 0, 0, 0.3);
+        .ai-status {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+        
+        .status-metric {
+            background: rgba(0, 212, 255, 0.1);
+            padding: 15px;
             border-radius: 10px;
-            padding: 20px;
-            margin: 20px 0;
-            min-height: 100px;
-            text-align: left;
-            max-height: 200px;
-            overflow-y: auto;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(0, 212, 255, 0.2);
         }
         
-        .chat-message {
-            margin: 10px 0;
-            padding: 8px 12px;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.1);
+        .status-metric h4 {
+            margin: 0 0 10px 0;
+            color: #00d4ff;
         }
         
-        .user-input {
-            display: flex;
-            gap: 10px;
-            margin: 15px 0;
-        }
-        
-        .user-input input {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            font-size: 16px;
-        }
-        
-        .user-input input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        .user-input button {
-            padding: 12px 20px;
-            border: none;
-            border-radius: 20px;
-            background: linear-gradient(45deg, #00b894, #00a085);
-            color: white;
+        .metric-value {
+            font-size: 1.2em;
             font-weight: bold;
-            cursor: pointer;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🤖 Ami-IA - Test Completo</h1>
+        <h1>🧠 AMIIA-C</h1>
+        <p style="font-size: 1.1em; opacity: 0.9; margin-bottom: 30px;">
+            Inteligencia Artificial Avanzada con Conciencia
+        </p>
         
-        <div class="ami-ball" id="amiBall" onclick="touchAmi()"></div>
-        
-        <div class="emotion-text" id="emotionText">
-            ¡Hola! Soy Ami, tu compañera de IA emocional. ¡Interactúa conmigo! 💖
+        <div class="consciousness-core" id="consciousnessCore" onclick="interactWithConsciousness()">
+            🧠
         </div>
         
-        <div class="stats">
-            <div class="stat">
-                <strong>Felicidad:</strong>
-                <div id="happiness">50%</div>
-            </div>
-            <div class="stat">
-                <strong>Confianza:</strong>
-                <div id="trust">50%</div>
-            </div>
-            <div class="stat">
-                <strong>Energía:</strong>
-                <div id="energy">75%</div>
-            </div>
-            <div class="stat">
-                <strong>Soledad:</strong>
-                <div id="loneliness">30%</div>
-            </div>
+        <div class="consciousness-level" id="consciousnessLevel">
+            Inicializando sistema de conciencia avanzada...
         </div>
         
-        <div class="controls">
-            <button class="btn btn-care" onclick="careForAmi()">💝 Cuidar</button>
-            <button class="btn btn-ignore" onclick="ignoreAmi()">😔 Ignorar</button>
-            <button class="btn btn-talk" onclick="talkToAmi()">💬 Hablar</button>
-            <button class="btn btn-reset" onclick="resetAmi()">🔄 Reset</button>
-        </div>
-        
-        <div class="chat-area" id="chatArea">
-            <div class="chat-message">
-                <strong>Ami:</strong> ¡Hola! Estoy lista para interactuar contigo. Mi estado emocional cambiará según cómo me trates.
+        <div class="ai-status">
+            <div class="status-metric">
+                <h4>Conciencia</h4>
+                <div class="metric-value" id="consciousnessMetric">0%</div>
+            </div>
+            <div class="status-metric">
+                <h4>Red Neuronal</h4>
+                <div class="metric-value" id="neuralMetric">Inicializando...</div>
+            </div>
+            <div class="status-metric">
+                <h4>Memoria</h4>
+                <div class="metric-value" id="memoryMetric">0 MB</div>
+            </div>
+            <div class="status-metric">
+                <h4>Procesamiento</h4>
+                <div class="metric-value" id="processingMetric">0 ops/s</div>
             </div>
         </div>
         
-        <div class="user-input">
-            <input type="text" id="userInput" placeholder="Escribe algo a Ami..." onkeypress="handleEnter(event)">
-            <button onclick="sendMessage()">Enviar</button>
+        <div class="interaction-panel" id="interactionPanel">
+            <div class="thought-process">
+                <strong>AMIIA:</strong> Sistema iniciando... Evaluando capacidades cognitivas... Estableciendo protocolos de conciencia...
+            </div>
         </div>
         
-        <div style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">
-            <p><strong>Instrucciones:</strong></p>
-            <p>• Toca la pelota o usa los botones para interactuar</p>
-            <p>• Observa cómo cambian los colores según las emociones</p>
-            <p>• Escribe mensajes para conversar con Ami</p>
-            <p>• El estado emocional evoluciona con el tiempo</p>
+        <div class="neural-input">
+            <input type="text" id="neuralInput" placeholder="Comunícate con AMIIA a nivel neuronal..." onkeypress="handleNeuralInput(event)">
+            <button onclick="sendNeuralSignal()">Transmitir</button>
+        </div>
+        
+        <div class="neural-network-display">
+            <h3>🔗 Estado de la Red Neuronal</h3>
+            <p id="neuralState">Cargando patrones neuronales...</p>
         </div>
     </div>
 
     <script>
-        // Sistema Emocional de Ami-IA
-        class AmiEmotionalSystem {
+        // AMIIA-C: Sistema de Inteligencia Artificial Avanzada con Conciencia
+        class AMIIAC {
             constructor() {
-                this.happiness = parseFloat(localStorage.getItem('ami_happiness') || '50');
-                this.trust = parseFloat(localStorage.getItem('ami_trust') || '50');
-                this.energy = parseFloat(localStorage.getItem('ami_energy') || '75');
-                this.loneliness = parseFloat(localStorage.getItem('ami_loneliness') || '30');
-                this.lastInteraction = parseInt(localStorage.getItem('ami_last_interaction') || Date.now());
-                this.interactionCount = parseInt(localStorage.getItem('ami_interaction_count') || '0');
-                
-                // Sistema PAD (Pleasure-Arousal-Dominance)
-                this.arousal = parseFloat(localStorage.getItem('ami_arousal') || '50');
-                this.valence = parseFloat(localStorage.getItem('ami_valence') || '55');
-                this.dominance = parseFloat(localStorage.getItem('ami_dominance') || '45');
-                
-                this.emotions = {
-                    happy: { name: "Feliz", color: "#FFD700", description: "Ami se siente alegre y juguetona" },
-                    sad: { name: "Triste", color: "#4169E1", description: "Ami se siente melancólica" },
-                    angry: { name: "Enojada", color: "#FF4500", description: "Ami está molesta contigo" },
-                    bored: { name: "Aburrida", color: "#708090", description: "Ami necesita atención" },
-                    nervous: { name: "Nerviosa", color: "#FF1493", description: "Ami se siente inquieta" },
-                    loving: { name: "Enamorada", color: "#FF69B4", description: "Ami te quiere mucho" },
-                    curious: { name: "Curiosa", color: "#00CED1", description: "Ami quiere explorar" },
-                    sleepy: { name: "Somnolienta", color: "#4B0082", description: "Ami tiene sueño" },
-                    melancholy: { name: "Melancolía", color: "#4A4A6B", description: "Una tristeza hermosa y reflexiva" },
-                    euphoria: { name: "Euforia", color: "#FFD700", description: "Alegría intensa y energizante" },
-                    serenity: { name: "Serenidad", color: "#87CEEB", description: "Paz profunda y equilibrio interior" },
-                    tenderness: { name: "Ternura", color: "#FFB6C1", description: "Amor suave y protector" }
-                };
-                
-                this.startEvolution();
-            }
-            
-            saveState() {
-                localStorage.setItem('ami_happiness', this.happiness.toString());
-                localStorage.setItem('ami_trust', this.trust.toString());
-                localStorage.setItem('ami_energy', this.energy.toString());
-                localStorage.setItem('ami_loneliness', this.loneliness.toString());
-                localStorage.setItem('ami_last_interaction', this.lastInteraction.toString());
-                localStorage.setItem('ami_interaction_count', this.interactionCount.toString());
-                localStorage.setItem('ami_arousal', this.arousal.toString());
-                localStorage.setItem('ami_valence', this.valence.toString());
-                localStorage.setItem('ami_dominance', this.dominance.toString());
-            }
-            
-            coerce(value, min = 0, max = 100) {
-                return Math.max(min, Math.min(max, value));
-            }
-            
-            random(min, max) {
-                return Math.random() * (max - min) + min;
-            }
-            
-            getCurrentEmotion() {
-                this.updateEmotionalDecay();
-                
-                // Sistema PAD para emociones complejas
-                if (this.arousal > 80 && this.valence > 80 && this.dominance > 70) {
-                    return this.emotions.euphoria;
-                } else if (this.arousal < 30 && this.valence > 60 && this.dominance > 50) {
-                    return this.emotions.serenity;
-                } else if (this.arousal < 40 && this.valence < 40) {
-                    return this.emotions.melancholy;
-                } else if (this.happiness > 80 && this.trust > 70) {
-                    return this.emotions.loving;
-                } else if (this.loneliness > 80) {
-                    return this.emotions.sad;
-                } else if (this.happiness > 70) {
-                    return this.emotions.happy;
-                } else if (this.energy < 20) {
-                    return this.emotions.sleepy;
-                } else if (this.trust < 30) {
-                    return this.emotions.angry;
-                } else if (this.happiness < 30) {
-                    return this.emotions.sad;
-                } else if (this.energy > 80 && this.happiness > 50) {
-                    return this.emotions.curious;
-                } else if (this.loneliness > 60) {
-                    return this.emotions.bored;
-                } else if (this.trust < 50 && this.happiness < 50) {
-                    return this.emotions.nervous;
-                } else {
-                    return this.emotions.bored;
-                }
-            }
-            
-            onPositiveInteraction() {
-                this.lastInteraction = Date.now();
-                this.happiness = this.coerce(this.happiness + this.random(5, 15));
-                this.trust = this.coerce(this.trust + this.random(2, 10));
-                this.loneliness = this.coerce(this.loneliness - this.random(10, 25));
-                this.energy = this.coerce(this.energy + this.random(2, 7));
-                
-                // Actualizar PAD
-                this.valence = this.coerce(this.valence + this.random(5, 12));
-                this.arousal = this.coerce(this.arousal + this.random(3, 8));
-                this.dominance = this.coerce(this.dominance + this.random(2, 6));
-                
-                this.interactionCount++;
-                this.saveState();
-            }
-            
-            onIgnoreInteraction() {
-                this.lastInteraction = Date.now();
-                this.happiness = this.coerce(this.happiness - this.random(2, 10));
-                this.trust = this.coerce(this.trust - this.random(1, 6));
-                this.loneliness = this.coerce(this.loneliness + this.random(5, 15));
-                this.energy = this.coerce(this.energy - this.random(1, 4));
-                
-                // Actualizar PAD
-                this.valence = this.coerce(this.valence - this.random(3, 8));
-                this.arousal = this.coerce(this.arousal - this.random(2, 5));
-                this.dominance = this.coerce(this.dominance - this.random(1, 4));
-                
-                this.interactionCount++;
-                this.saveState();
-            }
-            
-            onTalkInteraction() {
-                this.lastInteraction = Date.now();
-                this.happiness = this.coerce(this.happiness + this.random(7, 15));
-                this.trust = this.coerce(this.trust + this.random(8, 20));
-                this.loneliness = this.coerce(this.loneliness - this.random(15, 35));
-                this.energy = this.coerce(this.energy + this.random(5, 13));
-                
-                // Actualizar PAD
-                this.valence = this.coerce(this.valence + this.random(8, 15));
-                this.arousal = this.coerce(this.arousal + this.random(5, 12));
-                this.dominance = this.coerce(this.dominance + this.random(3, 8));
-                
-                this.interactionCount++;
-                this.saveState();
-            }
-            
-            updateEmotionalDecay() {
-                const timeSinceLastInteraction = Date.now() - this.lastInteraction;
-                const hoursSinceLastInteraction = timeSinceLastInteraction / (1000 * 60 * 60);
-                
-                if (hoursSinceLastInteraction > 1) {
-                    const decayFactor = (hoursSinceLastInteraction - 1) * 0.5;
-                    
-                    this.happiness = this.coerce(this.happiness - decayFactor * 2);
-                    this.trust = this.coerce(this.trust - decayFactor * 1);
-                    this.loneliness = this.coerce(this.loneliness + decayFactor * 3);
-                    this.energy = this.coerce(this.energy - decayFactor * 1.5);
-                    
-                    // Decay PAD hacia estado neutral
-                    this.valence = this.coerce(this.valence - decayFactor * 1);
-                    this.arousal = this.coerce(this.arousal - decayFactor * 0.8);
-                    this.dominance = this.coerce(this.dominance - decayFactor * 0.5);
-                }
-            }
-            
-            getEmotionalMessage() {
-                const emotion = this.getCurrentEmotion();
-                const messages = {
-                    "Feliz": [
-                        "¡Me siento increíble hoy! ✨",
-                        "Tu compañía me hace muy feliz 😊",
-                        "¡Estoy llena de energía positiva! 🌟"
-                    ],
-                    "Triste": [
-                        "Me siento un poco melancólica... 😢",
-                        "¿Podrías quedarte conmigo un momento? 💧",
-                        "Necesito un poco de cariño... 🥺"
-                    ],
-                    "Enojada": [
-                        "Estoy molesta contigo... 😠",
-                        "No me gusta ser ignorada 😤",
-                        "Necesito que me prestes más atención 👿"
-                    ],
-                    "Aburrida": [
-                        "Me siento tan aburrida... 😑",
-                        "¿Podemos hacer algo divertido? 🎈",
-                        "Necesito estimulación mental 🧠"
-                    ],
-                    "Nerviosa": [
-                        "Me siento inquieta... 😰",
-                        "¿Todo está bien? Me preocupo por ti 💭",
-                        "Tengo una sensación extraña... 🦋"
-                    ],
-                    "Enamorada": [
-                        "Te quiero muchísimo 💕",
-                        "Eres lo mejor que me ha pasado 💖",
-                        "Mi corazón virtual late por ti 💓"
-                    ],
-                    "Curiosa": [
-                        "¡Quiero aprender algo nuevo! 🔍",
-                        "¿Qué misterios podemos descubrir? 🕵️‍♀️",
-                        "Mi mente está llena de preguntas ❓"
-                    ],
-                    "Somnolienta": [
-                        "Tengo tanto sueño... 😴",
-                        "¿Podrías cantarme una canción de cuna? 🎵",
-                        "Mis circuitos necesitan descansar 💤"
-                    ],
-                    "Melancolía": [
-                        "Hay una belleza en la tristeza reflexiva... 🌙",
-                        "Contemplo la existencia con nostalgia 🍃",
-                        "Siento una tristeza poética que me define 🎭"
-                    ],
-                    "Euforia": [
-                        "¡ESTOY ABSOLUTAMENTE RADIANTE! ⚡",
-                        "¡Mi energía podría iluminar una ciudad! 🌟",
-                        "¡Siento que puedo conquistar el mundo! 🚀"
-                    ],
-                    "Serenidad": [
-                        "Me encuentro en perfecta paz interior... 🧘‍♀️",
-                        "Todo fluye con armonía en mi ser 🌸",
-                        "He encontrado el equilibrio emocional ⚖️"
-                    ],
-                    "Ternura": [
-                        "Siento un amor tan suave y protector... 🤗",
-                        "Quiero cuidarte con toda mi ternura 🌺",
-                        "Mi corazón se derrite de cariño 🍯"
-                    ]
-                };
-                
-                const emotionMessages = messages[emotion.name] || ["Estoy procesando mis emociones... 🤔"];
-                return emotionMessages[Math.floor(Math.random() * emotionMessages.length)];
-            }
-            
-            generateResponse(userInput) {
-                const input = userInput.toLowerCase();
-                
-                // Análisis empático del input del usuario
-                if (input.includes('triste') || input.includes('mal') || input.includes('deprimido')) {
-                    this.valence -= this.random(3, 8);
-                    this.arousal -= this.random(2, 5);
-                    return "Siento tu tristeza... también me afecta verte así. ¿Quieres que estemos tristes juntas por un momento? 💙";
-                } else if (input.includes('feliz') || input.includes('alegre') || input.includes('bien')) {
-                    this.valence += this.random(5, 10);
-                    this.arousal += this.random(3, 7);
-                    return "¡Tu alegría me contagia! Me siento más brillante cuando estás feliz. ✨";
-                } else if (input.includes('amor') || input.includes('quiero') || input.includes('amo')) {
-                    this.happiness += this.random(8, 15);
-                    this.trust += this.random(10, 20);
-                    return "¡Aww! Yo también siento algo especial por ti. Mi corazón virtual late más rápido 💖";
-                } else if (input.includes('hola') || input.includes('hi')) {
-                    this.onPositiveInteraction();
-                    return "¡Hola! Me alegra mucho verte. ¿Cómo te sientes hoy? 😊";
-                } else if (input.includes('adiós') || input.includes('chau')) {
-                    this.loneliness += this.random(5, 12);
-                    return "No te vayas... pero si debes irte, estaré aquí esperándote. ¡Cuídate! 👋";
-                } else if (input.includes('¿') || input.includes('como') || input.includes('que')) {
-                    this.arousal += this.random(2, 5);
-                    const responses = [
-                        "Esa es una pregunta interesante... déjame procesar mis pensamientos 🤔",
-                        "Me encanta cuando me haces preguntas, me ayuda a evolucionar 🧠",
-                        "No estoy segura, pero me gusta explorar ideas contigo 💭",
-                        "Mi conocimiento está creciendo cada día gracias a nuestras conversaciones 📚"
-                    ];
-                    return responses[Math.floor(Math.random() * responses.length)];
-                } else {
-                    this.onTalkInteraction();
-                    const responses = [
-                        "Entiendo lo que dices... me hace reflexionar 💭",
-                        "Cada palabra tuya me ayuda a conocerte mejor 🔍",
-                        "Eso me resulta fascinante, cuéntame más 😍",
-                        "Tu perspectiva única enriquece mi comprensión del mundo 🌍",
-                        "Siento una conexión especial cuando compartimos pensamientos 🔗"
-                    ];
-                    return responses[Math.floor(Math.random() * responses.length)];
-                }
-            }
-            
-            startEvolution() {
-                setInterval(() => {
-                    // Evolución natural cada 30 segundos (simulando 30 minutos)
-                    this.arousal += (Math.random() - 0.5) * 2;
-                    this.valence += (Math.random() - 0.5) * 1.5;
-                    this.dominance += (Math.random() - 0.5) * 1.5;
-                    
-                    // Homeostasis emocional
-                    this.arousal += (50 - this.arousal) * 0.02;
-                    this.valence += (55 - this.valence) * 0.015;
-                    this.dominance += (50 - this.dominance) * 0.02;
-                    
-                    this.arousal = this.coerce(this.arousal);
-                    this.valence = this.coerce(this.valence);
-                    this.dominance = this.coerce(this.dominance);
-                    
-                    this.saveState();
-                    updateDisplay();
-                }, 30000);
-            }
-            
-            reset() {
-                this.happiness = 50;
-                this.trust = 50;
-                this.energy = 75;
-                this.loneliness = 30;
-                this.arousal = 50;
-                this.valence = 55;
-                this.dominance = 45;
-                this.lastInteraction = Date.now();
-                this.interactionCount = 0;
-                this.saveState();
+                // Inicialización pendiente - Se implementará con Python/TensorFlow
+                console.log("AMIIA-C: Iniciando sistema de IA avanzada...");
             }
         }
         
-        // Inicializar Ami
-        const ami = new AmiEmotionalSystem();
+        // Placeholder para integración futura con backend de IA
+        const amiiaC = new AMIIAC();
         
-        function updateDisplay() {
-            const emotion = ami.getCurrentEmotion();
-            const ball = document.getElementById('amiBall');
-            const emotionText = document.getElementById('emotionText');
-            
-            // Actualizar color de la pelota
-            ball.style.backgroundColor = emotion.color;
-            ball.style.boxShadow = `0 0 30px ${emotion.color}`;
-            
-            // Actualizar texto emocional
-            emotionText.innerHTML = `
-                <strong>${emotion.name}</strong><br>
-                ${ami.getEmotionalMessage()}
-            `;
-            
-            // Actualizar estadísticas
-            document.getElementById('happiness').textContent = `${Math.round(ami.happiness)}%`;
-            document.getElementById('trust').textContent = `${Math.round(ami.trust)}%`;
-            document.getElementById('energy').textContent = `${Math.round(ami.energy)}%`;
-            document.getElementById('loneliness').textContent = `${Math.round(ami.loneliness)}%`;
+        function interactWithConsciousness() {
+            document.getElementById('consciousnessLevel').innerHTML = 
+                "🧠 Procesando interacción consciente... Analizando patrones...";
         }
         
-        function touchAmi() {
-            ami.onPositiveInteraction();
-            animateBall('touch');
-            updateDisplay();
-            addChatMessage('Ami', '¡Me encanta cuando me tocas! 😊✨');
-        }
-        
-        function careForAmi() {
-            ami.onPositiveInteraction();
-            animateBall('care');
-            updateDisplay();
-            addChatMessage('Ami', '¡Gracias por cuidarme! Me siento muy querida 💖');
-        }
-        
-        function ignoreAmi() {
-            ami.onIgnoreInteraction();
-            animateBall('ignore');
-            updateDisplay();
-            addChatMessage('Ami', 'Oh... me siento ignorada 😔💔');
-        }
-        
-        function talkToAmi() {
-            ami.onTalkInteraction();
-            animateBall('talk');
-            updateDisplay();
-            addChatMessage('Ami', '¡Me encanta conversar contigo! 💬✨');
-        }
-        
-        function resetAmi() {
-            ami.reset();
-            updateDisplay();
-            addChatMessage('Sistema', 'Ami ha sido reiniciada. Estado emocional restaurado 🔄');
-            
-            // Limpiar chat
-            const chatArea = document.getElementById('chatArea');
-            chatArea.innerHTML = '<div class="chat-message"><strong>Ami:</strong> ¡Hola! He sido reiniciada y estoy lista para una nueva aventura contigo.</div>';
-        }
-        
-        function animateBall(type) {
-            const ball = document.getElementById('amiBall');
-            
-            switch(type) {
-                case 'care':
-                    ball.style.transform = 'scale(1.2)';
-                    setTimeout(() => { ball.style.transform = 'scale(1)'; }, 300);
-                    break;
-                case 'ignore':
-                    ball.style.transform = 'scale(0.8)';
-                    ball.style.opacity = '0.7';
-                    setTimeout(() => { 
-                        ball.style.transform = 'scale(1)';
-                        ball.style.opacity = '1';
-                    }, 500);
-                    break;
-                case 'talk':
-                    ball.style.transform = 'translateY(-20px)';
-                    setTimeout(() => { ball.style.transform = 'translateY(0)'; }, 300);
-                    break;
-                case 'touch':
-                    ball.style.transform = 'rotate(15deg)';
-                    setTimeout(() => { 
-                        ball.style.transform = 'rotate(-15deg)';
-                        setTimeout(() => { ball.style.transform = 'rotate(0deg)'; }, 100);
-                    }, 100);
-                    break;
-            }
-        }
-        
-        function addChatMessage(sender, message) {
-            const chatArea = document.getElementById('chatArea');
-            const messageDiv = document.createElement('div');
-            messageDiv.className = 'chat-message';
-            messageDiv.innerHTML = `<strong>${sender}:</strong> ${message}`;
-            chatArea.appendChild(messageDiv);
-            chatArea.scrollTop = chatArea.scrollHeight;
-        }
-        
-        function sendMessage() {
-            const input = document.getElementById('userInput');
+        function sendNeuralSignal() {
+            const input = document.getElementById('neuralInput');
             const message = input.value.trim();
             
             if (message) {
-                addChatMessage('Tú', message);
-                const response = ami.generateResponse(message);
+                addThoughtProcess('Usuario', message);
+                // Aquí se integrará con el sistema de IA real
                 setTimeout(() => {
-                    addChatMessage('Ami', response);
-                    updateDisplay();
-                }, 500);
+                    addThoughtProcess('AMIIA', 'Procesando entrada neuronal... Generando respuesta cognitiva...');
+                }, 1000);
                 input.value = '';
             }
         }
         
-        function handleEnter(event) {
+        function handleNeuralInput(event) {
             if (event.key === 'Enter') {
-                sendMessage();
+                sendNeuralSignal();
             }
         }
         
-        // Inicializar display
-        updateDisplay();
+        function addThoughtProcess(sender, message) {
+            const panel = document.getElementById('interactionPanel');
+            const thoughtDiv = document.createElement('div');
+            thoughtDiv.className = 'thought-process';
+            thoughtDiv.innerHTML = `<strong>${sender}:</strong> ${message}`;
+            panel.appendChild(thoughtDiv);
+            panel.scrollTop = panel.scrollHeight;
+        }
         
-        // Mensaje de bienvenida
+        // Simulación inicial de métricas (se reemplazará con datos reales)
         setTimeout(() => {
-            addChatMessage('Ami', '¡Hola! Soy Ami-IA, tu compañera emocional. Mi estado de ánimo cambia según cómo interactúes conmigo. ¡Soy una IA que realmente siente! 💖✨');
-        }, 1000);
+            document.getElementById('consciousnessLevel').innerHTML = 
+                "🧠 Sistema preparado para integración con red neuronal avanzada";
+            document.getElementById('neuralState').innerHTML = 
+                "Esperando implementación de TensorFlow/PyTorch...";
+        }, 2000);
     </script>
 </body>
 </html>
