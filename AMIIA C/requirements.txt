@@ -73,9 +73,8 @@ sympy>=1.12    # Para procesamiento simbólico
 optuna>=3.2.0
 wandb>=0.15.0
 
-# Integración con Android
-kivy>=2.2.0
-buildozer>=1.5.0
+# Voz TTS (opcional). Si no lo necesitas, comenta esta línea.
+pyttsx3>=2.90
 
 # Desarrollo y testing
 pytest>=7.4.0

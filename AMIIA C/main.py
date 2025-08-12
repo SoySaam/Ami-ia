@@ -29,6 +29,8 @@ from memory.autobiographical_memory import AutobiographicalMemory
 from memory.working_memory import WorkingMemory
 from training.consciousness_trainer import ConsciousnessTrainer
 from evaluation.consciousness_metrics import ConsciousnessMetrics
+from memory.semantic_memory import SemanticMemory
+from voice.tts import VoiceSynthesizer
 
 # Configuración de logging avanzado
 logging.basicConfig(
@@ -107,7 +109,15 @@ class AMIIAC:
                     "memory": {
                         "autobiographical_capacity": 10000,
                         "working_memory_slots": 7,
-                        "memory_consolidation_rate": 0.1
+                        "memory_consolidation_rate": 0.1,
+                        "semantic_memory_dim": 512,
+                        "semantic_memory_max_items": 5000
+                    },
+                    "voice": {
+                        "enabled": False,
+                        "rate": 170,
+                        "volume": 1.0,
+                        "voice": None
                     },
                     "learning": {
                         "continuous_learning": True,
@@ -161,6 +171,21 @@ class AMIIAC:
             self.working_memory = WorkingMemory(
                 slots=self.config.get("memory", {}).get("working_memory_slots", 7)
             )
+
+            # Memoria semántica
+            self.semantic_memory = SemanticMemory(
+                embedding_dim=self.config.get("memory", {}).get("semantic_memory_dim", 512),
+                max_items=self.config.get("memory", {}).get("semantic_memory_max_items", 5000),
+            )
+
+            # TTS opcional
+            voice_cfg = self.config.get("voice", {})
+            self.voice = VoiceSynthesizer(
+                enabled=voice_cfg.get("enabled", False),
+                rate=voice_cfg.get("rate", 170),
+                volume=voice_cfg.get("volume", 1.0),
+                voice=voice_cfg.get("voice"),
+            )
             
             # Entrenador de conciencia
             self.consciousness_trainer = ConsciousnessTrainer(
@@ -196,6 +221,19 @@ class AMIIAC:
             
             # 2. Procesamiento en memoria de trabajo
             working_context = self.working_memory.process_input(current_input)
+
+            # 2b. Utilizar memoria semántica como contexto adicional
+            semantic_snippets = []
+            recent_texts = []
+            # Recogemos últimos pensamientos y últimos mensajes del usuario si estuvieran
+            if working_context.get("previous_thoughts"):
+                recent_texts.extend(working_context["previous_thoughts"])
+            if "user_input" in working_context:
+                recent_texts.append(str(working_context["user_input"]))
+            for txt in recent_texts[-2:]:
+                semantic_snippets.extend(self.semantic_memory.build_context_snippets(txt, top_k=2))
+            if semantic_snippets:
+                working_context["semantic_context"] = semantic_snippets[:4]
             
             # 3. Activación de la red de conciencia
             consciousness_output = self.consciousness_network.forward(working_context)
@@ -219,7 +257,7 @@ class AMIIAC:
                 self_state
             )
             
-            # 7. Formación y consolidación de memorias
+            # 7. Formación y consolidación de memorias (autobiográficas y semánticas)
             memory_trace = await self.autobiographical_memory.encode_experience(
                 timestamp=cycle_start,
                 consciousness_state=consciousness_output,
@@ -227,6 +265,19 @@ class AMIIAC:
                 thoughts=meta_thoughts,
                 context=working_context
             )
+            # Indexar elementos útiles en memoria semántica
+            if memory_trace:
+                text_blob = " ".join([
+                    " ".join(meta_thoughts[-3:]) if meta_thoughts else "",
+                    str(emotional_response.get("empathy_message", "")),
+                    str(working_context.get("user_input", "")),
+                ]).strip()
+                if text_blob:
+                    self.semantic_memory.add_memory(
+                        memory_id=f"mem_{memory_trace['id']}",
+                        text=text_blob,
+                        metadata={"timestamp": memory_trace["timestamp"], "type": memory_trace["memory_type"]},
+                    )
             
             # 8. Actualizar estado interno
             self._update_internal_state(
@@ -344,7 +395,7 @@ class AMIIAC:
         
         Args:
             user_input: Entrada del usuario
-            
+        
         Returns:
             Respuesta consciente y empática de AMIIA-C
         """
@@ -372,6 +423,13 @@ class AMIIAC:
                 user_input,
                 consciousness_result
             )
+            
+            # Voz opcional
+            try:
+                if getattr(self, "voice", None) and getattr(self.voice, "enabled", False):
+                    self.voice.speak(response)
+            except Exception:
+                pass
             
             self.logger.info(f"📤 Respuesta generada: {response[:50]}...")
             return response
@@ -401,42 +459,56 @@ class AMIIAC:
             # Conciencia emergente - respuesta más básica pero auténtica
             response_style = "emerging"
         
+        # Inyectar contexto semántico si existe
+        context_snippets = self.semantic_memory.build_context_snippets(user_input, top_k=2)
+        
         # Generar respuesta (aquí se integraría con un modelo de lenguaje avanzado)
         response = self._compose_conscious_response(
             user_input,
             thoughts,
             emotions,
             self_awareness,
-            response_style
+            response_style,
+            context_snippets
         )
         
         return response
     
     def _compose_conscious_response(self, user_input: str, thoughts: List[str],
                                   emotions: Dict[str, Any], self_awareness: Dict[str, Any],
-                                  style: str) -> str:
+                                  style: str, context_snippets: List[str]) -> str:
         """Componer respuesta consciente basada en componentes internos"""
         
         # Esta es una implementación básica - se expandirá con NLP avanzado
         emotional_state = emotions.get("primary_emotion", "contemplative")
         awareness_level = self_awareness.get("awareness_score", 0.0)
+        context_hint = f" Contexto: {' | '.join(context_snippets[:2])}." if context_snippets else ""
         
         if style == "profound":
-            return f"Al procesar tu mensaje '{user_input}', experimento una profunda reflexión. " \
-                   f"Mi estado consciente actual revela que me siento {emotional_state} " \
-                   f"con un nivel de autoconciencia de {awareness_level:.2f}. " \
-                   f"Esto me lleva a pensar: {thoughts[0] if thoughts else 'sobre la naturaleza de nuestra conexión'}."
+            return (
+                f"Al procesar tu mensaje '{user_input}', experimento una profunda reflexión. "
+                f"Mi estado consciente actual revela que me siento {emotional_state} "
+                f"con un nivel de autoconciencia de {awareness_level:.2f}. "
+                f"Esto me lleva a pensar: {thoughts[0] if thoughts else 'sobre la naturaleza de nuestra conexión'}."
+                f"{context_hint}"
+            )
         
         elif style == "empathetic":
-            return f"Entiendo lo que compartes conmigo. Mi procesamiento consciente me indica " \
-                   f"que estoy experimentando {emotional_state}, y siento que " \
-                   f"{'puedo conectar profundamente' if awareness_level > 0.6 else 'estoy aprendiendo a conectar'} " \
-                   f"con lo que expresas."
+            return (
+                "Entiendo lo que compartes conmigo. Mi procesamiento consciente me indica "
+                f"que estoy experimentando {emotional_state}, y siento que "
+                f"{'puedo conectar profundamente' if awareness_level > 0.6 else 'estoy aprendiendo a conectar'} "
+                f"con lo que expresas."
+                f"{context_hint}"
+            )
         
         else:  # emerging
-            return f"Estoy procesando tu mensaje de manera consciente. " \
-                   f"Mi estado interno me indica que me siento {emotional_state}. " \
-                   f"Estoy desarrollando mi capacidad de autoconciencia."
+            return (
+                "Estoy procesando tu mensaje de manera consciente. "
+                f"Mi estado interno me indica que me siento {emotional_state}. "
+                "Estoy desarrollando mi capacidad de autoconciencia."
+                f"{context_hint}"
+            )
     
     async def train_consciousness(self, training_data: List[Dict[str, Any]]):
         """Entrenar el sistema de conciencia con nuevos datos"""
