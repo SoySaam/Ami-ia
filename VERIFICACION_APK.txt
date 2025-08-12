@@ -1,5 +1,0 @@
-Fecha: Tue Jul  8 01:48:09 PM UTC 2025
-APK generado exitosamente en múltiples ubicaciones:
-./build/outputs/apk/debug/Ami-IA-debug.apk
-./APK/Ami-IA-debug.apk
-./APKLIST/Ami-IA-debug.apk
