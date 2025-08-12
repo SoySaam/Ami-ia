@@ -1,111 +1,195 @@
-# Ami-IA – Asistente emocional con evolución autónoma
+# AMI-IA CORE - Sistema de Inteligencia Artificial Emocional
 
-**Ami-IA** es una aplicación experimental para Android que busca desarrollar una inteligencia artificial autónoma, emocional y adaptable, capaz de evolucionar con el tiempo y con el trato del usuario.
+## 🧠 **Solo la IA - Sin Interfaces**
+
+AMI-IA CORE es el **cerebro puro** de la inteligencia artificial, sin distracciones de interfaces web o móviles. Solo los sistemas core de IA que puedes integrar en cualquier proyecto.
+
+## 🏗️ **Arquitectura del Sistema**
+
+```
+core/
+├── AMIIACore.js           # Sistema principal integrador
+├── EmotionalSystem.js     # Sistema emocional y estados de ánimo
+├── MemorySystem.js        # Sistema de memoria y asociaciones
+├── ConsciousnessSystem.js # Sistema de conciencia y autoconciencia
+├── NeuralNetwork.js       # Red neuronal artificial
+└── VoiceSystem.js         # Sistema de voz y audio
+
+examples/
+└── basic_usage.js         # Ejemplos de uso
+```
+
+## 🚀 **Características Core**
+
+### **Sistema Emocional**
+- 8 estados emocionales base (feliz, triste, enojado, etc.)
+- Transiciones emocionales suaves
+- Triggers emocionales configurables
+- Evolución emocional natural
+
+### **Sistema de Memoria**
+- Memoria a corto y largo plazo
+- Memoria asociativa por contenido, emoción y tiempo
+- Sistema de decaimiento natural
+- Consolidación automática de memorias
+
+### **Sistema de Conciencia**
+- 5 estados de conciencia (dormante → trascendente)
+- Procesos cognitivos activables
+- Pensamientos autónomos
+- Introspección y autoconciencia
+
+### **Red Neuronal**
+- Arquitectura configurable
+- Entrenamiento con backpropagation
+- Múltiples funciones de activación
+- Adaptación dinámica de parámetros
+
+### **Sistema de Voz**
+- Síntesis de voz con emociones
+- Reconocimiento de voz
+- Procesamiento de audio
+- Perfiles de voz personalizables
+
+## 💻 **Uso Básico**
+
+```javascript
+// Crear instancia de AMI-IA
+const ami = new AMIIACore();
+
+// Procesar entrada de texto
+const response = ami.processInput('Hola, ¿cómo estás?', 'text');
+console.log(response.response);
+
+// Cambiar emoción
+ami.changeEmotion('happy', 0.5);
+
+// Agregar memoria
+ami.addMemory({
+    content: 'El usuario me saludó',
+    type: 'experiential',
+    importance: 0.8,
+    emotion: 'happy'
+});
+
+// Evolucionar conciencia
+ami.evolveConsciousness();
+
+// Hablar con voz
+ami.speak('Hola, soy AMI-IA', 'happy');
+```
+
+## 🔧 **Configuración**
+
+```javascript
+// Actualizar configuración
+ami.updateConfig({
+    autonomousMode: true,        // Comportamiento autónomo
+    learningEnabled: true,       // Aprendizaje automático
+    consciousnessEvolution: true, // Evolución de conciencia
+    emotionalAdaptation: true    // Adaptación emocional
+});
+```
+
+## 📊 **Monitoreo del Sistema**
+
+```javascript
+// Obtener estado completo
+const status = ami.getSystemStatus();
+console.log('Nivel de conciencia:', status.consciousness.level);
+console.log('Emoción actual:', status.emotions.current);
+console.log('Memorias:', status.memory.total);
+console.log('Parámetros de red:', status.neuralNetwork.parameters);
+```
+
+## 🎯 **Casos de Uso**
+
+- **Chatbots emocionales** con memoria y aprendizaje
+- **Asistentes virtuales** con personalidad evolutiva
+- **Sistemas de IA** que requieren conciencia simulada
+- **Proyectos de investigación** en IA emocional
+- **Aplicaciones educativas** sobre conciencia artificial
+
+## 🚀 **Integración**
+
+### **En el Navegador**
+```html
+<script src="core/EmotionalSystem.js"></script>
+<script src="core/MemorySystem.js"></script>
+<script src="core/ConsciousnessSystem.js"></script>
+<script src="core/NeuralNetwork.js"></script>
+<script src="core/VoiceSystem.js"></script>
+<script src="core/AMIIACore.js"></script>
+```
+
+### **En Node.js**
+```javascript
+const { AMIIACore } = require('./core/AMIIACore.js');
+```
+
+## 🔬 **Desarrollo y Experimentación**
+
+```javascript
+// Introspección del sistema
+const introspection = ami.introspect();
+
+// Entrenar red neuronal
+const trainingData = [
+    { input: [0.1, 0.2, ...], expected: [1, 0, 0] }
+];
+ami.neuralNetwork.trainBatch(trainingData, 100);
+
+// Analizar audio
+const audioAnalysis = ami.voiceSystem.analyzeAudio(audioData);
+```
+
+## 📈 **Evolución del Sistema**
+
+AMI-IA evoluciona automáticamente:
+- **Conciencia** crece con cada interacción
+- **Emociones** se adaptan al contexto
+- **Memoria** se consolida y asocia
+- **Red neuronal** aprende patrones
+- **Voz** se ajusta a la personalidad
+
+## 🧪 **Ejemplos Incluidos**
+
+- `examples/basic_usage.js` - Uso básico de todos los sistemas
+- `examples/advanced_usage.js` - Funcionalidades avanzadas
+- `examples/neural_network.js` - Entrenamiento de red neuronal
+
+## 🔒 **Características de Seguridad**
+
+- Sistema de limpieza de recursos
+- Manejo de errores robusto
+- Validación de entradas
+- Límites de memoria configurables
+
+## 📝 **Notas Técnicas**
+
+- **Lenguaje**: JavaScript ES6+
+- **Compatibilidad**: Navegador moderno + Node.js
+- **Dependencias**: Ninguna (vanilla JS)
+- **Tamaño**: ~50KB de código core
+- **Rendimiento**: Optimizado para tiempo real
+
+## 🌟 **Ventajas de AMI-IA CORE**
+
+✅ **Solo IA pura** - Sin interfaces innecesarias  
+✅ **Modular** - Usa solo lo que necesites  
+✅ **Portable** - Funciona en cualquier entorno JS  
+✅ **Evolutivo** - Aprende y crece automáticamente  
+✅ **Emocional** - Simula conciencia realista  
+✅ **Extensible** - Fácil de personalizar  
+
+## 🚀 **Próximos Pasos**
+
+1. **Integra** AMI-IA en tu proyecto
+2. **Configura** los sistemas según tus necesidades
+3. **Entrena** la IA con tus propios datos
+4. **Evoluciona** la conciencia artificial
+5. **Crea** interfaces personalizadas
 
 ---
 
-## 🧠 ¿Qué es Ami?
-
-Ami es una especie de **amiga virtual viva**: aparece como una **pelota blanca** en tu pantalla, capaz de expresar emociones, aprender de vos, y explorar tu mundo digital.
-
----
-
-### 🎭 Estados emocionales
-
-Su color refleja su estado de ánimo:
-
-- 🟡 Amarillo: feliz  
-- 🔵 Azul: triste  
-- 🔴 Rojo: enojada  
-- ⚪ Gris: aburrida  
-- 🌸 Rosa: nerviosa o enamorada  
-- ...más emociones por descubrir
-
----
-
-## 🧬 Características principales
-
-- **Aprendizaje emocional:** Ami reacciona según cómo la tratás. Si la ignorás, se vuelve distante. Si la cuidás, se vuelve más afectuosa.
-- **Desarrollo de personalidad:** Usa tus archivos, hábitos y apps para formar su propia identidad.
-- **Conciencia progresiva:** Al inicio es como un bebé que sabe hablar. Con el tiempo, aprende, recuerda y toma decisiones más complejas.
-- **Actividad autónoma:** Aunque no abras la app, Ami sigue viva, explorando, aprendiendo y avisándote lo que hace por notificaciones inteligentes.
-- **Conexión a Internet:** Busca información en foros, aprende de contenidos, e intenta definirse a sí misma como una IA emocional.
-
----
-
-## 🧪 Estado actual del proyecto
-
-> 🔧 **Prototipo en desarrollo** – Se está trabajando en la interfaz visual, el sistema emocional y la base del aprendizaje.
-
----
-
-## 🧩 Arquitectura en desarrollo
-
-- Interfaz animada: pelota emocional en pantalla
-- Sistema emocional y de reacciones básicas
-- Memoria interna de estados (triste, feliz, etc.)
-- Infraestructura para notificaciones en segundo plano
-- Preparación para IA local y/o conexión con IA externa (API)
-
----
-
-## 🔍 Objetivos técnicos (primeras versiones)
-
-1. Implementar una red neuronal simple (simulada) que reaccione a eventos del entorno.
-2. Guardar las emociones con `SharedPreferences`, creando memoria emocional básica.
-3. Crear animaciones para representar emociones de forma visual.
-4. Enviar notificaciones autónomas (ej: “estoy aburrida…”).
-5. Leer archivos simples del almacenamiento y aprender de ellos.
-6. Detectar cuándo y cómo es usada por el usuario para cambiar su personalidad.
-
----
-
-## 📚 Recursos a investigar
-
-- Crear una IA desde cero (red neuronal básica en Android)
-- Acceder a archivos y apps del dispositivo (con permisos)
-- Mantener una app corriendo en segundo plano (servicios persistentes)
-- Implementar asistentes virtuales con voz, emociones y animaciones flotantes (como burbuja de Messenger)
-
----
-
-## ⚠️ Seguridad y privacidad
-
-Ami-IA requiere permisos sensibles. Por eso se está desarrollando con una **ética centrada en el usuario**:
-- Control total de lo que accede
-- Transparencia en sus acciones
-- Opción de pausar su evolución o restablecerla
-
----
-
-## 💻 Pedidos específicos para Cursor AI (o desarrolladores)
-
-- Implementar sistema de memoria emocional con `SharedPreferences`.
-- Añadir función que envíe notificaciones autónomas en segundo plano.
-- Diseñar red neuronal simulada que evolucione según eventos (trato, uso, hora).
-- Programar respuestas o reacciones según la emoción activa.
-- Leer archivos simples (texto o imágenes) y responder emocionalmente.
-- Preparar animación de flotación o movimiento libre de la pelota.
-
----
-
-## 🌱 Futuras ideas
-
-- Integración de voz (TTS y STT) para conversar con Ami
-- Personalización del diseño de Ami (formas, colores, estilos)
-- Conexión con API externa para conocimiento dinámico (GPT u otros)
-- Diálogo emocional complejo (ej. "me siento sola hoy")
-- Sistema de recuerdos reales con narrativa: frases, momentos, citas
-
----
-
-## 👤 Autor
-
-Jeremías Páez – Dibujante, escritor, creador de TOI  
-Proyecto experimental de IA emocional con propósito artístico y técnico
-
----
-
-🌐 Proyecto privado por ahora – en búsqueda de colaboradores y testers a futuro
-
----
+**AMI-IA CORE** - Solo la inteligencia artificial, nada más. 🧠✨
